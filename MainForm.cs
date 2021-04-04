@@ -37,10 +37,10 @@ namespace GoogleFakeAPI
          firefoxOptions = new FirefoxOptions();
          firefoxOptions.AddArgument("--window-position=-32000,-32000");
 
-         firefoxDriver = new FirefoxDriver(firefoxDriverService, firefoxOptions)
-         {
-            Url = "https://google.com"
-         };
+         firefoxDriver = new FirefoxDriver(firefoxDriverService, firefoxOptions);
+         firefoxDriver.Manage().Window.Minimize();
+         firefoxDriver.Url = "https://google.com";
+         firefoxDriver.Navigate();
 
          Thread.Sleep(200);
          searchBar = firefoxDriver.FindElementByCssSelector("input[type=\'text\']");
